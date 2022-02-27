@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BookingApp</string>
+    <string name="register_here">Register here</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lbl_payment_details">Your Address: </string>
+    <string name="lbl_loca">Locality: </string>
+    <string name="lbl_city">city: </string>
+    <string name="lbl_state">State: </string>
+    <string name="country">Country: </string>
+    <string name="pincode">PinCode: </string>
+    <string name="dictrict">District: </string>
+    <string name="ques">  </string>
+</resources>

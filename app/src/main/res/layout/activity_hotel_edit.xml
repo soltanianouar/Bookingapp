@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.HotelEditActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/shape_toolbar01"
+        android:layout_height="250dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:src="@drawable/ic_back_white"
+            android:padding="5dp"
+            android:background="@android:color/transparent"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/iconIv"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/hotellogo"
+            android:layout_marginTop="40dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"/>
+        <TextView
+            android:fontFamily="sans-serif-condensed"
+            android:text="Edit Hotel info"
+            android:textSize="28sp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/iconIv"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_marginTop="225dp"
+        android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/titleTil"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_below="@+id/toolbarRl"
+        app:hintEnabled="false"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/titleEt"
+            android:background="@drawable/shape_edittext01"
+            android:drawableStart="@drawable/ic_baseline_hotel_24"
+            android:drawablePadding="10dp"
+            android:hint="Hotel Title"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textColorHint="@color/gray01"
+            android:inputType="textPersonName|textCapWords"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/descriptionTil"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_below="@+id/titleTil"
+        app:hintEnabled="false"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/descriptionEt"
+            android:background="@drawable/shape_edittext01"
+            android:drawableStart="@drawable/ic_baseline_hotel_24"
+            android:drawablePadding="10dp"
+            android:hint="Hotel description"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray01"
+            android:inputType="textMultiLine|textCapSentences"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/priceTil"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_below="@+id/descriptionTil"
+        app:hintEnabled="false"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/priceEt"
+            android:background="@drawable/shape_edittext01"
+            android:drawableStart="@drawable/ic_baseline_hotel_24"
+            android:drawablePadding="10dp"
+            android:hint="price"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray01"
+            android:inputType="textMultiLine|textCapSentences"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/categoryTv"
+        android:layout_below="@+id/priceTil"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_edittext01"
+        android:drawableStart="@drawable/ic_category_gray"
+        android:drawableEnd="@drawable/ic_down_gray"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:hint="Hotel Category"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textColorHint="@color/gray01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_below="@+id/categoryTv"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="5dp"
+        android:text="Update"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

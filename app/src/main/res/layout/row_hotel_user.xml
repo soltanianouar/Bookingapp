@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="5dp"
+    app:contentPadding="5dp"
+    android:layout_height="160dp">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/hotelRl"
+        android:layout_marginEnd="5dp"
+        android:background="@color/gray02"
+        android:layout_width="100dp"
+        android:layout_height="160dp">
+        <ImageView
+            android:id="@+id/hotelView"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+    <TextView
+
+        android:id="@+id/titleTv"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:text="Hotel title"
+        android:layout_toStartOf="@+id/moreBtn"
+        android:layout_toEndOf="@+id/hotelRl"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/distance"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:text="0.8 km du centre"
+        android:drawableStart="@drawable/ic_baseline_location_on_24"
+        android:layout_below="@+id/titleTv"
+        android:layout_toStartOf="@+id/moreBtn"
+        android:layout_toEndOf="@+id/hotelRl"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/wifi"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:text="Wi-Fi gratuit"
+        android:drawableStart="@drawable/ic_baseline_wifi_24"
+        android:layout_below="@+id/distance"
+        android:layout_toStartOf="@+id/moreBtn"
+        android:layout_toEndOf="@+id/hotelRl"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/priceTv"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:text="1800 DA"
+        android:textColor="#369139"
+        android:textStyle="bold"
+        android:layout_below="@+id/wifi"
+        android:layout_toStartOf="@+id/moreBtn"
+        android:layout_toEndOf="@+id/hotelRl"
+        android:maxLines="1"
+        android:textSize="16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/text"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:text="par nuit sur Hotels.com"
+        android:textStyle="bold"
+        android:layout_below="@+id/priceTv"
+        android:layout_toStartOf="@+id/moreBtn"
+        android:layout_toEndOf="@+id/hotelRl"
+        android:maxLines="1"
+        android:textSize="12sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/test"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:text="Annulation gratuite"
+        android:layout_below="@+id/text"
+        android:textColor="#369139"
+        android:layout_toEndOf="@+id/hotelRl"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/test1"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:text="Petit-déjeuner gratuit"
+        android:layout_below="@+id/test"
+        android:textColor="#369139"
+        android:layout_toStartOf="@+id/moreBtn"
+        android:layout_toEndOf="@+id/hotelRl"
+        android:maxLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/descriptionTv"
+        android:visibility="gone"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:text="description"
+        android:layout_toEndOf="@+id/hotelRl"
+        android:maxLines="4"
+        android:ellipsize="end"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/wifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/categoryTv"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:text="category"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:maxLines="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/rateTv"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:text="4.8"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/test"
+        android:layout_toStartOf="@+id/categoryTv"
+        android:textAlignment="center"
+        android:maxLines="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>
+</androidx.cardview.widget.CardView>

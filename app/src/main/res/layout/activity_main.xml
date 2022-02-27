@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+    <ImageView
+        android:id="@+id/iconIv"
+        android:layout_centerHorizontal="true"
+        android:layout_width="170dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/hotellogo"
+        android:layout_height="170dp"
+        android:layout_marginTop="25dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iconIv"
+        android:text="Welcome To Booking App"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:layout_marginVertical="16dp"/>
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_button01"
+        android:layout_above="@+id/skipBtn"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Login"/>
+    <Button
+        android:id="@+id/skipBtn"
+        android:layout_width="match_parent"
+        android:background="@drawable/shape_button02"
+        android:textColor="@color/purple_500"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+
+        android:text="CONTINUE WITHOUT LOGIN"/>
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
