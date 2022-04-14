@@ -1,7 +1,5 @@
 package com.l3si.bookingapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.view.View;
 import com.l3si.bookingapp.Authentification.LoginActivity;
 import com.l3si.bookingapp.Dashboard.DashboardUserActivity;
 import com.l3si.bookingapp.databinding.ActivityMainBinding;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
         //view binding
@@ -37,4 +37,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

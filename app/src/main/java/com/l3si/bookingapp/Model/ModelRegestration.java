@@ -1,7 +1,7 @@
 package com.l3si.bookingapp.Model;
 
 public class ModelRegestration {
-     String name ="",email ="",password ="",location="";
+     String name,email,password,location;
 
     public ModelRegestration() {
     }

@@ -8,20 +8,29 @@
     android:padding="20dp"
     tools:context=".MainActivity">
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/gg" />
+    <ImageView
         android:id="@+id/iconIv"
         android:layout_centerHorizontal="true"
         android:layout_width="170dp"
         android:scaleType="centerCrop"
         android:src="@drawable/hotellogo"
         android:layout_height="170dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         />
+
+
+
     <TextView
         android:layout_width="match_parent"
+        android:id="@+id/textView"
         android:layout_height="wrap_content"
         android:layout_below="@+id/iconIv"
         android:text="Welcome To Booking App"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:gravity="center_horizontal"

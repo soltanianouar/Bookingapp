@@ -1,14 +1,13 @@
 package com.l3si.bookingapp.Authentification;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -18,12 +17,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.l3si.bookingapp.Dashboard.DashboardUserActivity;
-import com.l3si.bookingapp.Location.LocationActivity;
 import com.l3si.bookingapp.Model.ModelRegestration;
-import com.l3si.bookingapp.activity.HotelDetailActivity;
 import com.l3si.bookingapp.databinding.ActivityRegisterBinding;
 
 import java.util.HashMap;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
     //view binding
@@ -32,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     //progress dialog
     private ProgressDialog progressDialog;
+    private ProgressBar progressbar;
     String loc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,25 +57,26 @@ public class RegisterActivity extends AppCompatActivity {
         binding.registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        validateData();
-
+                validateData();
+                //  registerNewUser();
             }
         });
 
 
     }
-    private String name ="",email ="",password ="",location="";
+
+    private String name,email,password,location;
     private void validateData() {
-    // Before creating account , lets do some data validation
+        // Before creating account , lets do some data validation
 
-    //get Data
-    name = binding.nameEt.getText().toString().trim();
-    email = binding.emailEt.getText().toString().trim();
-    location = binding.locationEt.getText().toString().trim();
-    password = binding.passwordEt.getText().toString().trim();
-    String cPassword = binding.cpasswordEt.getText().toString().trim();
+        //get Data
+        name = binding.nameEt.getText().toString().trim();
+        email = binding.emailEt.getText().toString().trim();
+        location = binding.locationEt.getText().toString().trim();
+        password = binding.passwordEt.getText().toString().trim();
+        String cPassword = binding.cpasswordEt.getText().toString().trim();
 
-    //validation data
+        //validation data
         if (TextUtils.isEmpty(name)){
             Toast.makeText(this, "Enter your name...", Toast.LENGTH_SHORT).show();
         }else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
@@ -91,7 +93,6 @@ public class RegisterActivity extends AppCompatActivity {
             createUserAccount();
         }
     }
-
     private void createUserAccount() {
         //show progress
         progressDialog.setMessage("Creating account ...");
@@ -113,7 +114,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-
     private void updateUserInfo() {
         progressDialog.setMessage("Saving user info ...");
         // timestamp
@@ -128,15 +128,14 @@ public class RegisterActivity extends AppCompatActivity {
         hashMap.put("email",email);
         hashMap.put("location",location);
         hashMap.put("name",name);
+        hashMap.put("password",password);
         hashMap.put("profileImage","");// add empty , will do later
-
-        hashMap.put("userType","admin");// possible values are user admin , will make admiin manually in firebase realtime database by changing this valuse
+        hashMap.put("userType","user");// possible values are user admin , will make admiin manually in firebase realtime database by changing this valuse
         hashMap.put("timestamp",timestamp);
         // set data to db
-        Intent intent = new Intent(RegisterActivity.this, HotelDetailActivity.class);
-        intent.putExtra("lat2",loc);
+        Log.e("hashMap",""+hashMap);
         //intent.putExtra("long2",long2);
-        startActivity(intent);
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         ref.child(uid)
                 .setValue(hashMap)
@@ -145,6 +144,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         // data added to db
                         progressDialog.dismiss();
+
                         Toast.makeText(RegisterActivity.this, "Account created...", Toast.LENGTH_SHORT).show();
                         //since user account is createsd to start dashborad of user
                         startActivity(new Intent(RegisterActivity.this, DashboardUserActivity.class));
@@ -158,7 +158,5 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-    private void openintent(){
 
-    }
 }

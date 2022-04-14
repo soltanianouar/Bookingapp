@@ -1,8 +1,5 @@
 package com.l3si.bookingapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,10 +14,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.l3si.bookingapp.Adapter.AdapterHotelFavorite;
 import com.l3si.bookingapp.Model.ModelHotel;
-import com.l3si.bookingapp.databinding.ActivityMainBinding;
 import com.l3si.bookingapp.databinding.ActivityProfileBinding;
 
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
     //view binding
@@ -39,9 +38,8 @@ public class ProfileActivity extends AppCompatActivity {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         firebaseAuth = FirebaseAuth.getInstance();
-        //get data from intent e.g hotelId
+
         Intent intent = getIntent();
-        //hotelId = intent.getStringExtra("hotelId");
 
         hotelView = findViewById(R.id.hotelView);
 
@@ -81,6 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
                         hotelArrayList.clear();
                         for (DataSnapshot ds : snapshot.getChildren()){
                             String hotelId = ""+ds.child("hotelId").getValue();
+                            String hotelView = "" + snapshot.child("url").getValue();
                             ModelHotel modelHotel = ds.getValue(ModelHotel.class);
                             //set id to model
                           //  ModelHotel modelHotel = new ModelHotel();
@@ -89,6 +88,12 @@ public class ProfileActivity extends AppCompatActivity {
                            // hotelArrayList.add(modelHotel);
                             //String hotelView = ""+snapshot.child("url").getValue();
                             hotelArrayList.add(modelHotel);
+                            Intent intent = getIntent();
+                            //hotelId = intent.getStringExtra("hotelId");
+                          //  String imageUrl = intent.getStringExtra("image");
+                           ImageView hotelViews = findViewById(R.id.hotelView);
+                            //String imageUrl = intent.getStringExtra("image");
+                         //   Glide.with(getApplicationContext()).load(hotelView).into(hotelViews);
                           //  Intent intent = getIntent();
                           //  ImageView hotelViews = findViewById(R.id.hotelView);
                           //  String imageUrl = intent.getStringExtra("image");

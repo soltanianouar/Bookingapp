@@ -5,9 +5,10 @@
     android:layout_marginBottom="5dp"
     app:cardBackgroundColor="@color/white"
     app:cardElevation="0dp"
-    app:cardCornerRadius="5dp"
-    app:contentPadding="5dp"
-    android:layout_height="160dp">
+    android:layout_margin="7dp"
+    app:cardCornerRadius="12dp"
+    app:contentPadding="0dp"
+    android:layout_height="175dp">
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -18,7 +19,7 @@
         android:layout_marginEnd="5dp"
         android:background="@color/gray02"
         android:layout_width="100dp"
-        android:layout_height="160dp">
+        android:layout_height="178dp">
         <ImageView
             android:id="@+id/hotelView"
             android:scaleType="centerCrop"
@@ -29,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </RelativeLayout>
+
 
     <TextView
 
@@ -41,9 +43,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
-        android:id="@+id/distance"
+        android:id="@+id/location"
         style="@style/TextAppearance.MaterialComponents.Body2"
-        android:text="0.8 km du centre"
+        android:text="Batna"
         android:drawableStart="@drawable/ic_baseline_location_on_24"
         android:layout_below="@+id/titleTv"
         android:layout_toStartOf="@+id/moreBtn"
@@ -56,7 +58,7 @@
         style="@style/TextAppearance.MaterialComponents.Body2"
         android:text="Wi-Fi gratuit"
         android:drawableStart="@drawable/ic_baseline_wifi_24"
-        android:layout_below="@+id/distance"
+        android:layout_below="@+id/location"
         android:layout_toStartOf="@+id/moreBtn"
         android:layout_toEndOf="@+id/hotelRl"
         android:maxLines="1"
@@ -66,7 +68,7 @@
         android:id="@+id/priceTv"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:text="1800 DA"
-        android:textColor="#369139"
+        android:textColor="#4CAF50"
         android:textStyle="bold"
         android:layout_below="@+id/wifi"
         android:layout_toStartOf="@+id/moreBtn"
@@ -127,12 +129,43 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:maxLines="1"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/ratingBar"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
+
+        android:layout_toEndOf="@+id/ratingTil"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:text="4.6"
+        android:layout_alignParentBottom="true"
+        android:textAlignment="center"
+        android:maxLines="1"
+        android:textSize="16sp" />
+
+    <RatingBar
+        android:id="@+id/ratingTil"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@+id/hotelRl"
+        android:numStars="5"
+        android:rating="4"
+        android:theme="@style/RatingBar"
+        android:src="@drawable/four_star"
+        android:stepSize="0.5" />
     <TextView
         android:id="@+id/rateTv"
         style="@style/TextAppearance.MaterialComponents.Caption"
         android:text="4.8"
+        android:visibility="gone"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/test"
         android:layout_toStartOf="@+id/categoryTv"

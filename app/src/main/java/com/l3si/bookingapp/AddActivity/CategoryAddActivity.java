@@ -1,8 +1,5 @@
 package com.l3si.bookingapp.AddActivity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,6 +14,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.l3si.bookingapp.databinding.ActivityCategoryAddBinding;
 
 import java.util.HashMap;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CategoryAddActivity extends AppCompatActivity {
     //view binding
@@ -41,33 +41,24 @@ public class CategoryAddActivity extends AppCompatActivity {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
-
-            }
+                onBackPressed(); }
         });
-
         //handle click  , begin upload category
         binding.submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateData();
-
-            }
-        });
-
-    }
+                validateData(); }
+        }); }
     private String category = "";
     private void validateData() {
         // before adding validate data
-
         // get data
         category = binding.categoryEt.getText().toString().trim();
         //validation data
         if (TextUtils.isEmpty(category)){
             Toast.makeText(this, "Please enter category...!", Toast.LENGTH_SHORT).show();
         }else {
-            addCategoryFirebase();
-        }
+            addCategoryFirebase(); }
     }
     private void addCategoryFirebase() {
         progressDialog.setMessage("Adding category ...");

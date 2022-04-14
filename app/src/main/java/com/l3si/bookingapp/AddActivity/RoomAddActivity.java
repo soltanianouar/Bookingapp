@@ -1,8 +1,5 @@
 package com.l3si.bookingapp.AddActivity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -26,13 +23,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.l3si.bookingapp.Model.ModelHotel;
-import com.l3si.bookingapp.R;
-import com.l3si.bookingapp.databinding.ActivityHotelAddBinding;
 import com.l3si.bookingapp.databinding.ActivityRoomAddBinding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RoomAddActivity extends AppCompatActivity {
     //view binding
@@ -211,10 +208,10 @@ public class RoomAddActivity extends AppCompatActivity {
         //setup data to upload
         HashMap<String,Object> hashMap = new HashMap<>();
         hashMap.put("uid",""+uid);
-        hashMap.put("id",""+timetamp);
+        hashMap.put("idHotel",""+timetamp);
         hashMap.put("title",""+title);
         hashMap.put("price",""+price);
-        hashMap.put("Contlit",""+Contlit);
+        hashMap.put("contlit",""+Contlit);
         hashMap.put("id",""+selectedhotelId);
         hashMap.put("contpersonne",""+contpersonne);
         hashMap.put("url",""+uploadedimageUrl);
@@ -223,6 +220,8 @@ public class RoomAddActivity extends AppCompatActivity {
         //setup data to add in firebase db of current user for favorite hotel
         hashMap.put("hotelId",""+hotelId);
         hashMap.put("timestamp",""+timestamp);
+        hashMap.put("idRoom",""+timestamp);
+        hashMap.put("typeRoom","disponible");
         //save to db
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Hotel");
         ref.child(""+selectedhotelId).child("Rooms").child(""+timestamp)

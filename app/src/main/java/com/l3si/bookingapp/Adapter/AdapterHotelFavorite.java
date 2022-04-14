@@ -2,6 +2,7 @@ package com.l3si.bookingapp.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,13 +47,17 @@ public class AdapterHotelFavorite extends RecyclerView.Adapter<AdapterHotelFavor
     @Override
     public void onBindViewHolder(@NonNull HolderHotelFavorite holder, int position) {
         ModelHotel model = hotelArrayList.get(position);
+        String hotelView = model.getUrl();
         loadHotelDetails(model,holder);
+      //  Glide.with(context).load(hotelView).into(binding.hotelView);
+
         //handle click , open hotel details page
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent  = new Intent(context, HotelDetailActivity.class);
                 intent.putExtra("hotelId",model.getId());// pass hotel id not category id
+                intent.putExtra("image",hotelArrayList.get(position).getUrl());
                 context.startActivity(intent);
             }
         });
@@ -67,6 +72,7 @@ public class AdapterHotelFavorite extends RecyclerView.Adapter<AdapterHotelFavor
 
     private void loadHotelDetails(ModelHotel model, HolderHotelFavorite holder) {
         String hotelId = model.getId();
+        hotelArrayList = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Hotel");
         ref.child(hotelId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -88,6 +94,7 @@ public class AdapterHotelFavorite extends RecyclerView.Adapter<AdapterHotelFavor
                         model.setTimetamp(Long.parseLong(timetamp));
                         model.setCategoryId(categoryId);
                         model.setUid(uid);
+
                         model.setUrl(hotelView);
                         //format date
                         String date = MyApplication.formatTimestamp(Long.parseLong(timetamp));
@@ -99,6 +106,8 @@ public class AdapterHotelFavorite extends RecyclerView.Adapter<AdapterHotelFavor
                         holder.descriptionTv.setText(description);
                         holder.dateTv.setText(date);
                         holder.priceTv.setText(hotelprice);
+                        holder.hotelView.setImageURI(Uri.parse(hotelView));
+
                     }
 
                     @Override

@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:background="@drawable/shape_toolbar01"
             android:layout_height="?actionBarSize"/>
+
         <ImageButton
             android:id="@+id/profileBtn"
             android:layout_centerVertical="true"
@@ -23,6 +24,15 @@
             android:src="@drawable/ic_person_white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <ImageButton
+            android:id="@+id/buttonlocation"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="45dp"
+            android:src="@drawable/ic_baseline_gps_fixed_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:id="@+id/titleTv"
@@ -44,6 +54,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:id="@+id/logoutBtn"
+            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
@@ -52,37 +63,102 @@
             android:layout_marginEnd="10dp"
             android:layout_height="wrap_content"/>
 
+        <ImageButton
+            android:id="@+id/notificationBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/_35sdp"
+            android:layout_toStartOf="@+id/logoutBtn"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_notifications_24" />
+
 
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/locationLi"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:id="@+id/rev"
+        android:layout_margin="15dp"
         android:layout_below="@+id/toolbarR1"
         android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/buttonlocation"
-            android:text="Location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/nameuser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:fontFamily="sans-serif"
+                android:text="Bienvenue, Soltani anoir "
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="1dp">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/texts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:fontFamily="sans-serif"
+                android:text="Trouvez et réservez les meilleurs hôtels "
+                android:textColor="@color/gray02"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/nameuser"
+                tools:layout_editor_absoluteX="1dp">
+
+            </TextView>
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/progileIv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="right"
+                android:background="@color/colorPrimary_sec"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_person_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/nameuser"
+                app:shapeAppearance="@style/styleRoundeCornesImage" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
+
+
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_below="@+id/locationLi"
-        android:layout_margin="5dp"
-        android:layout_width="match_parent"
-        android:background="@android:color/transparent"
-        app:tabBackground="@drawable/tab_selector"
-        app:tabIndicatorFullWidth="false"
-        app:tabIndicatorHeight="0dp"
-        app:tabMode="scrollable"
-        app:tabUnboundedRipple="false"
-        android:layout_height="wrap_content"/>
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@+id/rev"
+            android:layout_marginBottom="5dp"
+            android:background="@android:color/transparent"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="0dp"
+            app:tabMode="scrollable"
+            app:tabUnboundedRipple="false" />
+
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
-        android:layout_below="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tabLayout"
+        android:layout_marginTop="6dp" />
+
 
 </RelativeLayout>

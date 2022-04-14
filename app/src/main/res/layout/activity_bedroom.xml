@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/back01"
     android:layout_height="match_parent"
     tools:context=".activity.BedroomActivity">
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:id="@+id/toolbarR1"
         android:background="@drawable/shape_toolbar02"
@@ -40,28 +43,10 @@
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>
-    <TextView
-        android:id="@+id/textLat"
-        android:layout_width="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textSize="16sp"
-        android:layout_alignParentRight="true"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:textColor="#FFFFFF"
-        android:text="160 KM"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
     <ScrollView
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbarR1"
+        android:layout_below="@+id/test"
         android:layout_marginTop="-1dp">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -74,5 +59,75 @@
 
         </androidx.recyclerview.widget.RecyclerView>
     </ScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/test"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/toolbarR1"
+        android:layout_height="50dp">
 
+        <TextView
+            android:id="@+id/Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto"
+            android:text="Pick your date de reseravestion"
+            android:textColor="@color/gray02"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/test1a"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resarvtionBtn" />
+
+        <Button
+            android:id="@+id/CalendarBtn"
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/book_button_bg"
+            android:fontFamily="@font/rubik"
+            android:text="Calendar Picker"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Text"
+            app:layout_constraintTop_toTopOf="@+id/Text"
+            app:layout_constraintVertical_bias="0.533" />
+
+        <TextView
+            android:id="@+id/daterangText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="12/05/2022"
+            android:textColor="#CF0303"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/Text"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/Text" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Your Date is :"
+            android:textColor="@color/gray02"
+            android:textSize="15sp"
+            android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="@+id/daterangText"
+            app:layout_constraintStart_toStartOf="@+id/Text"
+            app:layout_constraintTop_toBottomOf="@+id/Text" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
+
+
+
+</ScrollView>

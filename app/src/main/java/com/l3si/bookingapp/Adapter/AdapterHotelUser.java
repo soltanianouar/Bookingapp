@@ -2,51 +2,44 @@ package com.l3si.bookingapp.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.l3si.bookingapp.Dashboard.DashboardUserActivity;
-import com.l3si.bookingapp.Filter.FIiterHotelAdmin;
 import com.l3si.bookingapp.Filter.FilterHotelUser;
-import com.l3si.bookingapp.Location.LocationActivity;
 import com.l3si.bookingapp.Model.ModelHotel;
 import com.l3si.bookingapp.MyApplication;
-import com.l3si.bookingapp.R;
-import com.l3si.bookingapp.activity.BedroomActivity;
 import com.l3si.bookingapp.activity.HotelDetailActivity;
-import com.l3si.bookingapp.databinding.RowHotelAdminBinding;
 import com.l3si.bookingapp.databinding.RowHotelUserBinding;
-import com.l3si.bookingapp.fragment.HotelUserFragment;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class AdapterHotelUser extends RecyclerView.Adapter<AdapterHotelUser.HolderHotelUser> implements Filterable {
     private Context context;
-    public ArrayList<ModelHotel> hotelArrayList,filterList;
+    public ArrayList<ModelHotel> hotelArrayList,filterList,hotelrecomendedArrayList;
     private FilterHotelUser filter;
+    //Animation for image buttons
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
+    private ArrayList prodArrayList= null;
     private RowHotelUserBinding binding;
     private static final String TAG = "ADAPTER_HOTEL_USER_TAG";
-    public AdapterHotelUser(Context context, ArrayList<ModelHotel> hotelArrayList) {
+    public AdapterHotelUser(Context context, ArrayList<ModelHotel> hotelArrayList ) {
         this.context = context;
         this.hotelArrayList = hotelArrayList;
         this.filterList = hotelArrayList;
@@ -67,24 +60,28 @@ public class AdapterHotelUser extends RecyclerView.Adapter<AdapterHotelUser.Hold
         // get Data
         ModelHotel model = hotelArrayList.get(position);
         String hotelId =model.getId();
+       // Log.e("hotelId", " hotelId " +hotelId);
         String etSource = model.getLocation();
         double lat1 = model.getLattitude();
         double long1 = model.getLongitude();
         double distance = model.getDistance();
-
+       // String rating = model.getRating();
         String categoryId =model.getCategoryId();
         String hotelView = model.getUrl();
         String title = model.getTitle();
         String description = model.getDescription();
         String price = model.getPrice();
-
+        String avgrating = model.getReview();
         long timestamp = model.getTimetamp();
         // convert time
         //set data
+     //   loadReviews(model,holder);
         holder.titleTv.setText(title);
+       // holder.ratingBar.setText(rating);
+        holder.ratingBar.setText(avgrating);
         holder.descriptionTv.setText(description);
         holder.priceTv.setText(price+" DA");
-        holder.distance.setText(distance+" km du centre ville");
+        //holder.distance.setText(distance+" km du centre ville");
         if(hotelArrayList.get(position).getUrl() != null){
             new Timer().schedule(new TimerTask() {
                 @Override
@@ -100,12 +97,16 @@ public class AdapterHotelUser extends RecyclerView.Adapter<AdapterHotelUser.Hold
             },1500);
 
         }
-       // MyApplication.laodImageFromUrlSinglePage(""+hotelView,holder.hotelView);
+
         MyApplication.laodCategory(""+categoryId,holder.categoryTv);
-        MyApplication.laodDistance(""+hotelId,holder.distance);
+        MyApplication.getRating(""+hotelId,binding.ratingBar,binding.ratingTil);
+        MyApplication.laodlocation(""+hotelId,holder.location);
+
+        Log.e("ratingBar", " ratingBar " +avgrating);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               // MyApplication.addLocation(context,"","");
                 Intent intent = new Intent(context, HotelDetailActivity.class);
                 intent.putExtra("etSource",etSource);
                 intent.putExtra("lat1",lat1);
@@ -115,11 +116,14 @@ public class AdapterHotelUser extends RecyclerView.Adapter<AdapterHotelUser.Hold
               //  intents.putExtra("distance",distance);
                 intent.putExtra("image",hotelArrayList.get(position).getUrl());
                 context.startActivity(intent);
+                //Animation on click
+                v.startAnimation(buttonClick);
 
 
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
@@ -137,7 +141,9 @@ public class AdapterHotelUser extends RecyclerView.Adapter<AdapterHotelUser.Hold
     class HolderHotelUser extends RecyclerView.ViewHolder{
         ImageView hotelView;
         ProgressBar progressBar;
-        TextView titleTv,descriptionTv,priceTv,categoryTv,rateTv,distance;
+        RatingBar ratingTil;
+
+        TextView titleTv,descriptionTv,priceTv,categoryTv,rateTv,location,ratingBar;
         public HolderHotelUser(@NonNull View itemView) {
             super(itemView);
             hotelView = binding.hotelView;
@@ -147,7 +153,9 @@ public class AdapterHotelUser extends RecyclerView.Adapter<AdapterHotelUser.Hold
             priceTv = binding.priceTv;
             categoryTv = binding.categoryTv;
             rateTv = binding.rateTv;
-            distance = binding.distance;
+            ratingBar = binding.ratingBar;
+            location = binding.location;
+            ratingTil = binding.ratingTil;
         }
 
     }

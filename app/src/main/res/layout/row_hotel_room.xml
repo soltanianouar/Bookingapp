@@ -3,448 +3,261 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="10dp"
-    android:padding="10dp"
+    android:layout_marginTop="10dp"
+    android:padding="2dp"
+    android:background="@color/white"
     android:layout_height="wrap_content"
     tools:context=".activity.HotelDetailActivity">
-
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cont"
+        android:layout_height="310dp"
+        android:layout_margin="7dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:contentPadding="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        tools:layout_editor_absoluteX="17dp">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/hotelView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/bg1" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/titleTv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/titleTv"
-                app:srcCompat="@drawable/star" />
-
-            <ImageView
-                android:id="@+id/imageView8"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="10dp">
+            <RelativeLayout
+                android:id="@+id/hotelRl"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:visibility="gone"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:scaleType="fitXY"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView12"
-                app:srcCompat="@drawable/bg" />
+                android:layout_height="178dp"
+                android:layout_marginEnd="5dp"
+                android:background="@color/gray02">
 
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:visibility="gone"
-                android:layout_marginStart="8dp"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-                app:layout_constraintStart_toEndOf="@+id/imageView8"
-                app:layout_constraintTop_toTopOf="@+id/imageView8"
-                app:srcCompat="@drawable/bg1" />
+                <ImageView
+                    android:id="@+id/hotelView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
 
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="100dp"
-                android:visibility="gone"
-                android:layout_height="100dp"
-                android:layout_marginStart="8dp"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-                app:layout_constraintStart_toEndOf="@+id/imageView9"
-                app:layout_constraintTop_toTopOf="@+id/imageView9"
-                app:srcCompat="@drawable/bg2" />
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/titleTv"
-                android:layout_width="wrap_content"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Chambre confort"
-                android:textColor="@android:color/background_dark"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hotelView" />
-
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/hotelRl"
+                android:maxLines="1"
+                android:text="Hotel title" />
             <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
+                android:id="@+id/location"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:fontFamily="@font/rubik"
-                android:text="4.5"
-                android:textSize="11sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-                app:layout_constraintEnd_toStartOf="@+id/imageView5"
-                app:layout_constraintTop_toTopOf="@+id/imageView5" />
-
+                android:layout_below="@+id/titleTv"
+                android:layout_toStartOf="@+id/moreBtn"
+                android:layout_toEndOf="@+id/hotelRl"
+                android:drawableStart="@drawable/ic_baseline_location_on_24"
+                android:maxLines="1"
+                android:text="Batna" />
             <TextView
                 android:id="@+id/Contlit"
-                android:layout_width="wrap_content"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:drawableStart="@drawable/ic_baseline_airline_seat_individual_suite_24"
-                android:fontFamily="@font/roboto_medium"
-                android:text="  1 "
-                android:textColor="@color/gray02"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/titleTv"
-                app:layout_constraintTop_toBottomOf="@+id/titleTv" />
-
-            <TextView
-                android:id="@+id/ContlitTil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="  Grand lit"
-                android:textColor="@color/gray02"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/Contlit"
-                app:layout_constraintTop_toBottomOf="@+id/titleTv" />
-
+                android:layout_below="@+id/location"
+                android:layout_toStartOf="@+id/moreBtn"
+                android:layout_toEndOf="@+id/hotelRl"
+                android:drawableStart="@drawable/ic_baseline_bed_24"
+                android:maxLines="1"
+                android:text=" Contlit" />
             <TextView
                 android:id="@+id/contpersonne"
-                android:layout_width="wrap_content"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Contlit"
+                android:layout_toStartOf="@+id/moreBtn"
+                android:layout_toEndOf="@+id/hotelRl"
                 android:drawableStart="@drawable/ic_person_gray"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text=" 2 "
-                android:textColor="@color/gray02"
-                app:layout_constraintStart_toStartOf="@+id/Contlit"
-                app:layout_constraintTop_toBottomOf="@+id/Contlit" />
-
-            <TextView
-                android:id="@+id/contpersonneTil"
-                android:layout_width="wrap_content"
-
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="  Personnes"
-                android:textColor="@color/gray02"
-                app:layout_constraintStart_toEndOf="@+id/contpersonne"
-                app:layout_constraintTop_toBottomOf="@+id/Contlit" />
-
-            <TextView
-                android:id="@+id/categoryLabelTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_location_city_24"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Vue sur la ville"
-                android:textColor="@color/gray02"
-                app:layout_constraintStart_toStartOf="@+id/contpersonne"
-                app:layout_constraintTop_toBottomOf="@+id/contpersonne" />
-
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="79dp"
-                android:layout_height="18dp"
-                android:visibility="gone"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Photogellery"
-                android:textColor="@android:color/background_dark"
-                app:layout_constraintStart_toStartOf="@+id/categoryLabelTv"
-                app:layout_constraintTop_toBottomOf="@+id/categoryLabelTv" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:visibility="gone"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="About "
-                android:textColor="@android:color/background_dark"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
-            <TextView
-                android:id="@+id/descriptionTv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:visibility="gone"
-                android:layout_marginBottom="8dp"
-                android:text="Mughal Gardens which have truly changed the face of the Mughal Empire is one of the most popular and the most visited tourist attractions of Srinagar."
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView13"
-                app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-            <TextView
-                android:id="@+id/Équipements"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:visibility="gone"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Équipements de l'établissement"
-                android:textColor="@android:color/background_dark"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionTv" />
-            <TextView
-                android:id="@+id/Parkinggratuit"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:drawableStart="@drawable/ic_baseline_local_parking_24"
-                android:fontFamily="@font/roboto"
-                android:visibility="gone"
-                android:text="Parking gratuit"
-                android:textSize="12sp"
-                app:layout_constraintTop_toBottomOf="@+id/Équipements"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:maxLines="1"
+                android:text="contpersonne" />
             <TextView
                 android:id="@+id/wifi"
-                android:layout_width="wrap_content"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:visibility="gone"
-                android:layout_marginTop="10dp"
+                android:layout_below="@+id/contpersonne"
+                android:layout_toStartOf="@+id/moreBtn"
+                android:layout_toEndOf="@+id/hotelRl"
                 android:drawableStart="@drawable/ic_baseline_wifi_24"
-                android:fontFamily="@font/roboto"
-                android:text="Internet haut débit gratuit (Wi-Fi)"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Équipements"
-                app:layout_constraintStart_toEndOf="@+id/Parkinggratuit" />
+                android:maxLines="1"
+                android:text=" Wi-Fi gratuit" />
             <TextView
-                android:id="@+id/Piscine"
-                android:layout_width="wrap_content"
+                android:id="@+id/text"
+                style="@style/TextAppearance.MaterialComponents.Caption"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:drawableStart="@drawable/ic_baseline_pool_24"
-                android:fontFamily="@font/roboto"
-                android:text="Piscine"
+                android:layout_below="@+id/wifi"
+                android:layout_toStartOf="@+id/moreBtn"
+                android:layout_toEndOf="@+id/hotelRl"
+                android:maxLines="1"
+                android:text="par nuit sur Hotels.com"
                 android:textSize="12sp"
-                android:visibility="gone"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toEndOf="@+id/Parkinggratuit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Parkinggratuit" />
-            <TextView
-                android:id="@+id/dejeuner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_free_breakfast_24"
-                android:fontFamily="@font/roboto"
-                android:visibility="gone"
-                android:text="Petit-déjeuner inclus"
-                android:textSize="12sp"
-                app:layout_constraintHorizontal_weight="1"
-
-                app:layout_constraintStart_toStartOf="@+id/wifi"
-                app:layout_constraintTop_toBottomOf="@+id/wifi" />
-            <TextView
-                android:id="@+id/Change"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15sp"
-                android:drawableStart="@drawable/ic_baseline_euro_24"
-                android:fontFamily="@font/roboto"
-                android:text="Change des devises"
-                android:textSize="12sp"
-                android:visibility="gone"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toEndOf="@+id/dejeuner"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Piscine" />
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/Restaurant"
+                android:id="@+id/categoryTv"
+                style="@style/TextAppearance.MaterialComponents.Caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_restaurant_24"
-                android:fontFamily="@font/roboto"
-                android:text="Restaurant"
-                android:textSize="12sp"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@+id/dejeuner"
-                app:layout_constraintTop_toBottomOf="@+id/dejeuner" />
-            <TextView
-                android:id="@+id/Équipementsdelachambre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Équipements de la chambre"
-                android:textColor="@android:color/background_dark"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Restaurant" />
-            <TextView
-                android:id="@+id/Servicenchambre"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginStart="15dp"
-                android:drawableStart="@drawable/ic_baseline_room_service_24"
-                android:fontFamily="@font/roboto"
-                android:text="Service en chambre"
-                android:textSize="12sp"
-                app:layout_constraintTop_toBottomOf="@+id/Équipementsdelachambre"
-                app:layout_constraintStart_toStartOf="parent" />
-            <TextView
-                android:id="@+id/typedec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Extras"
-                android:textColor="@android:color/background_dark"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Servicenchambre" />
-            <RadioButton
-                android:id="@+id/radio1"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_height="wrap_content"
-
-                android:layout_marginStart="15dp"
-                android:fontFamily="@font/roboto"
-                android:text="Petit-déjeuner non compris "
-                android:textSize="12sp"
-                app:layout_constraintTop_toBottomOf="@+id/typedec"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+0 DA"
-                android:textColor="#BD0707"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/resarvtionBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/radio1"
-                app:layout_constraintTop_toBottomOf="@+id/Restaurant" />
-            <RadioButton
-                android:id="@+id/radio2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_baseline_airline_seat_individual_suite_24"
-                android:fontFamily="@font/roboto"
-                android:text="Petit-déjeuner buffet + Parking"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/radio1"
-                app:layout_constraintTop_toBottomOf="@+id/radio1" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+500 DA"
-                android:textColor="#BD0707"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/resarvtionBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/radio2"
-                app:layout_constraintTop_toTopOf="@+id/radio2" />
-
-            <Button
-                android:id="@+id/favoriteBtn"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:visibility="gone"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="16dp"
-                android:drawableTop="@drawable/ic_favorite_white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/radio2" />
-
-            <Button
-                android:id="@+id/resarvtionBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/book_button_bg"
-                android:fontFamily="@font/rubik"
-                android:text="Réserver"
-                android:textColor="#FFFFFF"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/favoriteBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/radio1"
-                app:layout_constraintTop_toTopOf="@+id/favoriteBtn" />
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:maxLines="1"
+                android:text="category" />
 
             <TextView
                 android:id="@+id/priceTv"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto"
-                android:text="2000 DA "
+                android:layout_below="@+id/text"
+                android:layout_marginBottom="25dp"
+                android:layout_toStartOf="@+id/moreBtn"
+                android:layout_toEndOf="@+id/hotelRl"
+                android:maxLines="1"
+                android:text="1800 DA"
                 android:textColor="#BD0707"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/radio2"
-                app:layout_constraintTop_toBottomOf="@+id/radio2" />
-            <TextView
-                android:id="@+id/id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto"
-                android:text="texes et frais compris"
-                android:textColor="@color/gray02"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/priceTv"
-                app:layout_constraintTop_toBottomOf="@+id/priceTv" />
-            <TextView
-                android:id="@+id/ss"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto"
-                android:drawableEnd="@drawable/ic_baseline_navigate_next_24"
-                android:text="Détails sur le prix"
-                android:textColor="@color/purple_500"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/id"
-                app:layout_constraintTop_toBottomOf="@+id/id" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_below="@+id/hotelRl"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/test"
+                    style="@style/TextAppearance.MaterialComponents.Caption"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_toEndOf="@+id/hotelRl"
+                    android:maxLines="1"
+                    android:text="Extras"
+                    android:textColor="@color/black" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/radio2"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_baseline_airline_seat_individual_suite_24"
+                        android:fontFamily="@font/roboto"
+                        android:text="Petit-déjeuner buffet + Parking"
+                        android:textSize="12sp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+500 DA"
+                        android:textColor="#BD0707"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
-    </ScrollView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/radio1"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Petit-déjeuner non compris "
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/typedec" />
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+0 DA"
+                        android:textColor="#BD0707"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
+            </LinearLayout>
 
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/testt"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="texes et frais compris"
+        android:textColor="@color/gray02"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/CalendarBtn"
+        app:layout_constraintEnd_toStartOf="@+id/CalendarBtn"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+    <TextView
+        android:id="@+id/test1a"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/moreBtn"
+        android:maxLines="1"
+        android:text="Détails sur le prix"
+        android:textColor="@color/purple_500"
+
+        app:layout_constraintEnd_toEndOf="@+id/testt"
+        app:layout_constraintStart_toStartOf="@+id/testt"
+        app:layout_constraintTop_toBottomOf="@+id/testt" />
+
+    <TextView
+        android:id="@+id/type_Rs"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_baseline_brightness_1_24"
+        android:padding="5dp"
+        android:text="Disponible"
+        android:textColor="@color/colorPrice"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/resarvtionBtn"
+        app:layout_constraintEnd_toStartOf="@+id/resarvtionBtn"
+        app:layout_constraintStart_toEndOf="@+id/test1a"
+        app:layout_constraintTop_toTopOf="@+id/resarvtionBtn" />
+    <Button
+        android:id="@+id/resarvtionBtn"
+        android:layout_width="105dp"
+        android:layout_height="38dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:background="@drawable/book_button_bg"
+        android:fontFamily="@font/rubik"
+        android:text="Réserver"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

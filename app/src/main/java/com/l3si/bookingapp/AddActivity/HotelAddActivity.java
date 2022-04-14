@@ -1,8 +1,5 @@
 package com.l3si.bookingapp.AddActivity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -26,13 +23,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.l3si.bookingapp.Model.ModelCategory;
-import com.l3si.bookingapp.activity.BedroomActivity;
-import com.l3si.bookingapp.activity.HotelDetailActivity;
 import com.l3si.bookingapp.databinding.ActivityHotelAddBinding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class HotelAddActivity extends AppCompatActivity {
     //view binding
@@ -174,6 +171,7 @@ public class HotelAddActivity extends AppCompatActivity {
         hashMap.put("url",""+uploadedimageUrl);
         hashMap.put("timetamp",timetamp);
         hashMap.put("viewsCount",0);
+        hashMap.put("réservéCount",0);
         //db ref :
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Hotel");
         ref.child(""+timetamp)

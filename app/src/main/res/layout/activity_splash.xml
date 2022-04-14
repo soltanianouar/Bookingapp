@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/ic_launcher_background"
+    android:background="@color/purple_500"
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
     <ImageView
         android:layout_width="200dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/hotellogo"
         android:layout_height="200dp">
 
     </ImageView>
